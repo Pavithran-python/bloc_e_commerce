@@ -2,6 +2,7 @@ import 'package:bloc_test_practise/Model/Cart.dart';
 import 'package:bloc_test_practise/Model/Order.dart';
 import 'package:bloc_test_practise/Model/Product.dart';
 import 'package:bloc_test_practise/Model/ProductItem.dart';
+import 'package:bloc_test_practise/Model/Review.dart';
 import 'package:bloc_test_practise/Model/User.dart';
 import 'package:bloc_test_practise/Repositories/APICallRepositories.dart';
 import 'package:dio/dio.dart';
@@ -25,7 +26,7 @@ class APICallMethod{
         List<User> getUserList = [];
         for(int i = 0 ; i < getUserData.length ; i++){
           Map<String,dynamic> getUserJson = getUserData[i];
-          getUserList.add(User.formJson(userJson: getUserJson));
+          getUserList.add(User.fromJson(userJson: getUserJson));
         }
         getAllUserDataResponse["data"] = getUserList;
       }

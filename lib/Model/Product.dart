@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc_test_practise/Model/Review.dart';
 
 class Product{
@@ -41,7 +43,8 @@ class Product{
     productBrand = productJson["brand"];
     productCategory = productJson["category"];
     productRating = productJson["rating"];
-    productReviews = productJson["reviews"];
+    productReviews = productJson["reviews"]==null?null:getReviewList(getReviewJson:productJson["reviews"]);
+    //productJson["reviews"].map((e) => Review.fromJson(reviewJson:e)).toList();
   }
 
   Map<String,dynamic> toJson(){
@@ -59,6 +62,15 @@ class Product{
     productJson["rating"] = productRating;
     productJson["reviews"] = productReviews;
     return productJson;
+  }
+  
+  List<Review> getReviewList({required List getReviewJson}){
+    List<Review> convertReview = [];
+    for(int i = 0 ; i < getReviewJson.length ; i++){
+      Map<String,dynamic> getReviewMap = getReviewJson[i];
+      convertReview.add(Review.fromJson(reviewJson: getReviewMap));
+    }
+    return convertReview;
   }
 
 }

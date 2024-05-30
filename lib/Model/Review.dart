@@ -2,7 +2,7 @@
 
 class Review{
   int? userId;
-  double? userRating;
+  int? userRating;
   String? userComment;
 
   Review({
@@ -11,7 +11,7 @@ class Review{
     required this.userComment
   });
 
-  Review.formJson({required Map<String,dynamic> reviewJson}){
+  Review.fromJson({required Map<String,dynamic> reviewJson}){
     userId = reviewJson["user_id"];
     userRating = reviewJson["rating"];
     userComment = reviewJson["comment"];

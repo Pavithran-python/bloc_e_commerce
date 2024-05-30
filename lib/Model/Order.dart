@@ -14,7 +14,7 @@ class Order{
   Order.fromJson({required Map<String,dynamic> orderJson}){
     orderId = orderJson["order_id"];
     userId = orderJson["user_id"];
-    productItem = orderJson["items"];
+    productItem = getProductItemList(getProductItemJson:orderJson["items"]);
   }
 
   Map<String,dynamic> toJson(){
@@ -23,6 +23,16 @@ class Order{
     orderJson["user_id"] = userId;
     orderJson["items"] = productItem;
     return orderJson;
+  }
+
+
+  List<ProductItem> getProductItemList({required List getProductItemJson}){
+    List<ProductItem> convertProductItem = [];
+    for(int i = 0 ; i < getProductItemJson.length ; i++){
+      Map<String,dynamic> getProductItemMap = getProductItemJson[i];
+      convertProductItem.add(ProductItem.fromJson(productItemJson: getProductItemMap));
+    }
+    return convertProductItem;
   }
 
 }

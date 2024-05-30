@@ -14,7 +14,7 @@ class Cart{
   Cart.fromJson({required Map<String,dynamic> cartJson}){
     cartId = cartJson["cart_id"];
     userId = cartJson["user_id"];
-    cartItem = cartJson["items"];
+    cartItem = getProductItemList(getProductItemJson:cartJson["items"]);
   }
 
   Map<String,dynamic> toJson(){
@@ -23,6 +23,15 @@ class Cart{
     cartJson["user_id"] = userId;
     cartJson["items"] = cartItem;
     return cartJson;
+  }
+
+  List<ProductItem> getProductItemList({required List getProductItemJson}){
+    List<ProductItem> convertProductItem = [];
+    for(int i = 0 ; i < getProductItemJson.length ; i++){
+      Map<String,dynamic> getProductItemMap = getProductItemJson[i];
+      convertProductItem.add(ProductItem.fromJson(productItemJson: getProductItemMap));
+    }
+    return convertProductItem;
   }
 
 }

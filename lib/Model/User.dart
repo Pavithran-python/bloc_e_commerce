@@ -12,7 +12,7 @@ class User{
     required this.password
   });
 
-  User.formJson({required Map<String,dynamic> userJson}){
+  User.fromJson({required Map<String,dynamic> userJson}){
     userId = userJson["user_id"];
     userName = userJson["username"];
     emailId = userJson["email"];

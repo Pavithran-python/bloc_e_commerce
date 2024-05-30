@@ -8,7 +8,7 @@ class ProductItem{
     required this.quantity,
   });
 
-  ProductItem.formJson({required Map<String,dynamic> productItemJson}){
+  ProductItem.fromJson({required Map<String,dynamic> productItemJson}){
     productId = productItemJson["product_id"];
     quantity = productItemJson["quantity"];
   }

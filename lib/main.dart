@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -74,10 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String,dynamic> getUserData = await APICallMethod().getUserAPIData();
     if(getUserData["status"]){
       print("Success");
-      List<User> getUserList = getUserData["data"];
-      for(int i = 0 ; i < getUserList.length ; i++){
-        print("User(${i+1}) : ${getUserList[i].userName}");
-      }
+      print("User Data : ${getUserData}");
     }
     else{
       print("Failure");
@@ -90,10 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String,dynamic> getProductData = await APICallMethod().getProductAPIData();
     if(getProductData["status"]){
       print("Success");
-      List<Product> getProductList = getProductData["data"];
-      for(int i = 0 ; i < getProductList.length ; i++){
-        print("Product(${i+1}) : ${getProductList[i]}");
-      }
+      print("Product Data : ${getProductData}");
     }
     else{
       print("Failure");
@@ -106,10 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String,dynamic> getCartData = await APICallMethod().getCartAPIData();
     if(getCartData["status"]){
       print("Success");
-      List<Cart> getCartList = getCartData["data"];
-      for(int i = 0 ; i < getCartList.length ; i++){
-        print("Cart(${i+1}) : ${getCartList[i]}");
-      }
+      print("Cart Response : ${getCartData}");
     }
     else{
       print("Failure");
@@ -122,10 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String,dynamic> getOrderData = await APICallMethod().getOrderAPIData();
     if(getOrderData["status"]){
       print("Success");
-      List<Order> getOrderList = getOrderData["data"];
-      for(int i = 0 ; i < getOrderList.length ; i++){
-        print("Order(${i+1}) : ${getOrderList[i]}");
-      }
+      print("Order Data : ${getOrderData}");
     }
     else{
       print("Failure");
@@ -138,8 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<String,dynamic> getOrderByIdData = await APICallMethod().getOrderByIdAPIData(getOrderId: 1);
     if(getOrderByIdData["status"]){
       print("Success");
-      Order getOrderByIdList = getOrderByIdData["data"];
-      print("Order : ${getOrderByIdList}");
+      print("Get Order By Data : ${getOrderByIdData}");
     }
     else{
       print("Failure");
